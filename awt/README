@@ -1,0 +1,13 @@
+
+AppEngine-compatible eplacement for java.awt and javax.imagio classes
+Based on http://code.google.com/p/appengine-awt/
+but brutally hacked at it to meet our own needs.
+
+Migrate existing source code with:
+
+cd myproject/src
+find . -type f -print0 | xargs -0 sed -i 's/java\.awt\./com.google.code.appengine.awt./g'
+find . -type f -print0 | xargs -0 sed -i 's/javax\.imageio\./com.google.code.appengine.imageio./g'
+
+
+Text rendering is not at all implemented.

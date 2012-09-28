@@ -36,7 +36,7 @@
 			<url>http://nexus.bedatadriven.com/content/repositories/oss-releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>bedatadriven-snapshots</id>
+			<id>bedatadriven-oss-snapshot</id>
 			<name>bedatadriven Open-Source snapshots</name>
 			<url>http://nexus.bedatadriven.com/content/repositories/oss-snapshots</url>
 		</snapshotRepository>
@@ -82,6 +82,7 @@
 		<module>awt</module>
 		<module>itext</module>
 		<module>jcharts</module>
+		<module>ppt</module>
   	</modules>
 
 	<dependencies>
