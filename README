@@ -1,0 +1,23 @@
+
+AppEngine Export Libaries
+
+
+This is a rag-tag collection of java libraries used by ActivityInfo (www.activityinfo.org)
+to generate documents for export, including:
+
+- PDF
+- RTF
+- HTML
+- PPT
+- PNG
+ 
+As well image manipulation used for maps and generating
+map icons on the fly.
+
+The pure-java implementation of the java.awt and javax.imageio
+libraries are based on the Apache Harmony implementation, via
+(http://code.google.com/p/appengine-awt/)
+
+Most of these libraries don't do any heavy-duty image manipulation
+but rather just reference forbidden classes like java.awt.Color 
+or java.awt.Rectangle. 

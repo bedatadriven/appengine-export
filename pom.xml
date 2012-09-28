@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bedatadriven.appengine.export</groupId>
+	<artifactId>export-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>AppEngine Export Parent</name>
+
+	<scm>
+		<connection>scm:git:git@github.com:bedatadriven/appengine-export.git</connection>
+		<url>scm:git:git@github.com:bedatadriven/appengine-export.git</url>
+		<developerConnection>scm:git:git@github.com:bedatadriven/appengine-export.git</developerConnection>
+	</scm>
+
+	<properties>
+
+		<!-- convenience to define GWT version in one place -->
+		<gwtVersion>2.3.0</gwtVersion>
+
+		<!-- tell the compiler we can use 1.6 -->
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+
+		<!-- Allow the build to continue even if there are test failures -->
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+
+	</properties>
+
+
+	<distributionManagement>
+		<repository>
+			<id>bedatadriven-oss</id>
+			<name>bedatadriven Open-Source releases</name>
+			<url>http://nexus.bedatadriven.com/content/repositories/oss-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>bedatadriven-snapshots</id>
+			<name>bedatadriven Open-Source snapshots</name>
+			<url>http://nexus.bedatadriven.com/content/repositories/oss-snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>bedatadriven-public</id>
+			<name>Bedatadriven Public Repo</name>
+			<url>http://nexus.bedatadriven.com/content/groups/public</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>http://repo1.maven.org/maven2/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>bedatadriven-public</id>
+			<name>Bedatadriven Public Repo</name>
+			<url>http://nexus.bedatadriven.com/content/groups/public</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>modafocus</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+	<modules>
+		<module>awt</module>
+		<module>itext</module>
+		<module>jcharts</module>
+  	</modules>
+
+	<dependencies>
+
+
+		<!-- Logging facades -->
+
+
+		<!-- Testing utils -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

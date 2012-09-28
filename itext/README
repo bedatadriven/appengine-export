@@ -1,0 +1,10 @@
+
+Port of iText to AppEngine, based on iText-2.1.7
+
+Changes are principally substitution of java.awt and javax.imageio class 
+with those from appengine-awt.
+
+Some classes (e.g. barcodes) have been removed because ActivityInfo isn't 
+using them and they had a dependency on an AWT component for some reason.
+
+
