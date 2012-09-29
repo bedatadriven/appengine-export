@@ -160,6 +160,8 @@ public abstract class Image extends Rectangle {
 	/** type of image */
 	public static final int ORIGINAL_JPEG2000 = 8;
 
+	public static final int ORIGINAL_EMF = 9;
+
     // member variables
 
 	/** The imagetype. */
