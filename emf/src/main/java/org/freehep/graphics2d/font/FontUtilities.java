@@ -77,13 +77,9 @@ public class FontUtilities {
         public void showString(Font font, String string) throws IOException;
     }
 
-    private static final CharTable STANDARD_CHAR_TABLES[] = { null,
-            Lookup.getInstance().getTable("Symbol"),
-            Lookup.getInstance().getTable("Zapfdingbats") };
+    private static final CharTable STANDARD_CHAR_TABLES[] = { null };
 
-    private static final Font STANDARD_FONT[] = { null,
-            new Font("Symbol", Font.PLAIN, 10),
-            new Font("ZapfDingbats", Font.PLAIN, 10), };
+    private static final Font STANDARD_FONT[] = { null };
 
     /**
      * Shows a String and switches the encoding (and font) everytime the unicode

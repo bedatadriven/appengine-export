@@ -447,7 +447,7 @@ public class EMFGraphics2D extends AbstractVectorGraphicsIO implements
             // font and
             // encode using unicode.
             String fontName = font.getName();
-            string = FontEncoder.getEncodedString(string, fontName);
+            ///string = FontEncoder.getEncodedString(string, fontName);
 
             String windowsFontName = FontUtilities
                 .getWindowsFontName(fontName);

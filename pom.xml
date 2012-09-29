@@ -83,7 +83,8 @@
 		<module>itext</module>
 		<module>jcharts</module>
 		<module>ppt</module>
-  	</modules>
+		<module>emf</module> 
+ 	</modules>
 
 	<dependencies>
 
