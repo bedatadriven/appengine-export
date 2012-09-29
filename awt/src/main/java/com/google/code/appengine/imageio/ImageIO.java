@@ -421,7 +421,8 @@ public final class ImageIO {
     }
 
     private static class Cache {
-        private boolean useCache = true;
+    	// we can't use a cache in AppEngine
+        private boolean useCache = false;
         private File cacheDirectory = null;
         
         public Cache() {

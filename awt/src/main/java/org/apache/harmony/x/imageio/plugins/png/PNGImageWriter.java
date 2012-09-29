@@ -19,6 +19,7 @@
  */
 package org.apache.harmony.x.imageio.plugins.png;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import java.util.Map;
 
 
 import org.apache.harmony.luni.util.NotImplementedException;
+import org.apache.harmony.x.imageio.internal.OutputStreamWrapper;
 import org.apache.harmony.x.imageio.internal.nls.Messages;
 import org.apache.sanselan.ImageFormat;
 import org.apache.sanselan.ImageWriteException;
@@ -40,6 +42,7 @@ import com.google.code.appengine.imageio.ImageWriteParam;
 import com.google.code.appengine.imageio.ImageWriter;
 import com.google.code.appengine.imageio.metadata.IIOMetadata;
 import com.google.code.appengine.imageio.spi.ImageWriterSpi;
+import com.google.code.appengine.imageio.stream.ImageOutputStream;
 
 
 public class PNGImageWriter extends ImageWriter {
@@ -107,7 +110,7 @@ public class PNGImageWriter extends ImageWriter {
         try {
         	Map params = new HashMap();
         	Sanselan.writeImage((BufferedImage) image,
-        			(OutputStream)getOutput(),
+        			wrapOutput(getOutput()),
         			ImageFormat.IMAGE_FORMAT_PNG,
         			params);
         }
@@ -117,7 +120,17 @@ public class PNGImageWriter extends ImageWriter {
         
     }
 
-    public ImageWriteParam getDefaultWriteParam() {
+    private OutputStream wrapOutput(Object output) {
+		if(output instanceof OutputStream) {
+			return (OutputStream)output;
+		} else if(output instanceof ImageOutputStream){
+			return new OutputStreamWrapper((ImageOutputStream) output);
+		} else {
+			throw new UnsupportedOperationException(output.getClass().getName());
+		}
+	}
+
+	public ImageWriteParam getDefaultWriteParam() {
         return new PNGImageWriterParam();
     }
 }

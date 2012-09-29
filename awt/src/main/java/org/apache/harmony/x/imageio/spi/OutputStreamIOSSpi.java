@@ -43,11 +43,11 @@ public class OutputStreamIOSSpi extends ImageOutputStreamSpi {
     @Override
     public ImageOutputStream createOutputStreamInstance(Object output, boolean useCache, File cacheDir) throws IOException {
         if (output instanceof OutputStream) {
-            if (useCache) {
-                return new FileCacheImageOutputStream((OutputStream) output, cacheDir);
-            } else {
+//            if (useCache) {
+//                return new FileCacheImageOutputStream((OutputStream) output, cacheDir);
+//            } else {
                 return new MemoryCacheImageOutputStream((OutputStream) output);
-            }
+//            }
         }
         throw new IllegalArgumentException(Messages.getString("imageio.85"));
     }
