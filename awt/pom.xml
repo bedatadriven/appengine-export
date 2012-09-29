@@ -10,4 +10,12 @@
 	<artifactId>appengine-awt</artifactId>
 	<packaging>jar</packaging>
 	<name>AppEngine AWT Implementation</name>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.google.typography</groupId>
+			<artifactId>sfntly</artifactId>
+			<version>r147</version>
+		</dependency>
+	</dependencies>
 </project>

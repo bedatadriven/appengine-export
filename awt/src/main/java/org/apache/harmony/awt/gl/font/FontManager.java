@@ -33,8 +33,8 @@ import org.apache.harmony.awt.Utils;
 import org.apache.harmony.awt.gl.CommonGraphics2DFactory;
 
 import com.google.code.appengine.awt.Font;
+import com.google.code.appengine.awt.font.sfntly.SfntlyFontPeer;
 import com.google.code.appengine.awt.peer.FontPeer;
-import com.google.code.appengine.awt.peer.NullFontPeer;
 
 
 public class FontManager {
@@ -396,7 +396,7 @@ public class FontManager {
      * 
      */
     public FontPeer createPhysicalFontPeer(String name, int style, int size) {
-    	throw new UnsupportedOperationException();
+    	return new SfntlyFontPeer(name, style, size);
     }
     
     /**
@@ -441,7 +441,7 @@ public class FontManager {
      * @param size size of the font
      */
     public FontPeer createDefaultFont(int style, int size) {
-    	return new NullFontPeer();
+    	return new SfntlyFontPeer("sans serif", style, size);
     }
     
     /**
