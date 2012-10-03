@@ -26,11 +26,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Arrays;
 import java.util.List;
 import java.net.URL;
 import org.apache.harmony.x.imageio.internal.nls.Messages;
+import org.apache.sanselan.ImageReadException;
+import org.apache.sanselan.common.byteSources.ByteSource;
+import org.apache.sanselan.common.byteSources.ByteSourceInputStream;
+import org.apache.sanselan.formats.png.PngImageParser;
 
 import com.google.code.appengine.awt.image.BufferedImage;
 import com.google.code.appengine.awt.image.RenderedImage;
@@ -318,9 +323,12 @@ public final class ImageIO {
         if (input == null) {
             throw new IllegalArgumentException(Messages.getString("imageio.52"));
         }
-
-        ImageInputStream stream = createImageInputStream(input);
-        return read(stream);
+        PngImageParser parser = new PngImageParser();
+        try {
+			return parser.getBufferedImage(new ByteSourceInputStream(input, "file.png"), Collections.emptyMap());
+		} catch (ImageReadException e) {
+			throw new IOException(e);
+		}
     }
 
     public static BufferedImage read(URL input) throws IOException {
