@@ -94,7 +94,7 @@ public class AlphaBlend extends EMFTag implements EMFConstants {
 
         // ignored
         /* int bmiOffset = */ emf.readDWORD(); // 80
-        int bmiSize = emf.readDWORD(); // 84
+        int bmiSize = emf.readDWORD(); // 84	
         /* int bitmapOffset = */ emf.readDWORD(); // 88
         int bitmapSize = emf.readDWORD(); // 92
 
