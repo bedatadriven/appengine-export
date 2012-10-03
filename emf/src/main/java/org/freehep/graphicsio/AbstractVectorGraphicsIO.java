@@ -18,6 +18,7 @@ import com.google.code.appengine.awt.Dimension;
 import com.google.code.appengine.awt.Font;
 import com.google.code.appengine.awt.FontMetrics;
 import com.google.code.appengine.awt.GradientPaint;
+import com.google.code.appengine.awt.Graphics2DUtil;
 import com.google.code.appengine.awt.Image;
 import com.google.code.appengine.awt.Paint;
 import com.google.code.appengine.awt.Rectangle;
@@ -546,7 +547,7 @@ public abstract class AbstractVectorGraphicsIO extends VectorGraphicsIO {
      * @param y
      */
     public void drawGlyphVector(GlyphVector g, float x, float y) {
-        fill(g.getOutline(x, y));
+    	Graphics2DUtil.drawGlyphVector(this, g, x, y);
     }
 
     public void drawString(AttributedCharacterIterator iterator, float x,

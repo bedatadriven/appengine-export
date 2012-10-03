@@ -58,6 +58,7 @@ import com.google.code.appengine.awt.FontMetrics;
 import com.google.code.appengine.awt.GradientPaint;
 import com.google.code.appengine.awt.Graphics;
 import com.google.code.appengine.awt.Graphics2D;
+import com.google.code.appengine.awt.Graphics2DUtil;
 import com.google.code.appengine.awt.GraphicsConfiguration;
 import com.google.code.appengine.awt.Image;
 import com.google.code.appengine.awt.Paint;
@@ -512,32 +513,7 @@ public class PdfGraphics2D extends Graphics2D {
      * @see Graphics2D#drawGlyphVector(GlyphVector, float, float)
      */
     public void drawGlyphVector(GlyphVector g, float x, float y) {
-    	if(isIdentity(g) && g instanceof CommonGlyphVector) {
-    		drawString(string((CommonGlyphVector)g), x, y);
-    	} else {
-	        Shape s = g.getOutline(x, y);
-	        fill(s);
-    	}
-    }
-    
-    private String string(CommonGlyphVector gv) {
-    	StringBuilder text = new StringBuilder();
-    	for(int i=0;i!=gv.getNumGlyphs();++i) {
-    		int charIndex = gv.getGlyphCharIndex(i);
-    		char ch = gv.getGlyphChar(charIndex);
-			text.append(ch);
-    	}
-    	return text.toString();
-    }
-    
-    private boolean isIdentity(GlyphVector gv) {
-    	for(int i=0;i!=gv.getNumGlyphs();++i) {
-    		AffineTransform tr = gv.getGlyphTransform(i);
-			if(tr != null && !tr.isIdentity()) {
-    			return false;
-    		}
-    	}
-    	return true;
+    	Graphics2DUtil.drawGlyphVector(this, g, x, y);
     }
     
     /**
