@@ -5,6 +5,15 @@ import java.net.URL;
 
 public class ImgEMF extends Image {
 
+	public ImgEMF(Image img) {
+		super(img);
+		if(img instanceof ImgEMF) {
+			ImgEMF toClone = (ImgEMF)img;
+		} else {
+			throw new UnsupportedOperationException();
+		}
+	}
+	
     public ImgEMF(byte[] img, float width, float height) throws BadElementException, IOException {
         super((URL)null);
         rawData = img;

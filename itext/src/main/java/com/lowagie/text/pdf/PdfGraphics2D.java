@@ -100,6 +100,9 @@ import java.util.Set;
 
 import com.lowagie.text.pdf.internal.PolylineShape;
 import java.util.Locale;
+
+import org.apache.harmony.awt.gl.font.CommonGlyphVector;
+
 import com.google.code.appengine.imageio.IIOImage;
 import com.google.code.appengine.imageio.ImageIO;
 import com.google.code.appengine.imageio.ImageWriteParam;
@@ -509,8 +512,32 @@ public class PdfGraphics2D extends Graphics2D {
      * @see Graphics2D#drawGlyphVector(GlyphVector, float, float)
      */
     public void drawGlyphVector(GlyphVector g, float x, float y) {
-        Shape s = g.getOutline(x, y);
-        fill(s);
+    	if(isIdentity(g) && g instanceof CommonGlyphVector) {
+    		drawString(string((CommonGlyphVector)g), x, y);
+    	} else {
+	        Shape s = g.getOutline(x, y);
+	        fill(s);
+    	}
+    }
+    
+    private String string(CommonGlyphVector gv) {
+    	StringBuilder text = new StringBuilder();
+    	for(int i=0;i!=gv.getNumGlyphs();++i) {
+    		int charIndex = gv.getGlyphCharIndex(i);
+    		char ch = gv.getGlyphChar(charIndex);
+			text.append(ch);
+    	}
+    	return text.toString();
+    }
+    
+    private boolean isIdentity(GlyphVector gv) {
+    	for(int i=0;i!=gv.getNumGlyphs();++i) {
+    		AffineTransform tr = gv.getGlyphTransform(i);
+			if(tr != null && !tr.isIdentity()) {
+    			return false;
+    		}
+    	}
+    	return true;
     }
     
     /**

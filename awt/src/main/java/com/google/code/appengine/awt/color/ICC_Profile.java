@@ -330,8 +330,8 @@ public class ICC_Profile implements Serializable {
     private transient ICC_Profile openedProfileObject;
 
     private ICC_Profile(byte[] data) {
-        profileHandle = NativeCMM.cmmOpenProfile(data);
-        NativeCMM.addHandle(this, profileHandle);
+//        profileHandle = NativeCMM.cmmOpenProfile(data);
+//        NativeCMM.addHandle(this, profileHandle);
     }
 
     /**
@@ -348,7 +348,7 @@ public class ICC_Profile implements Serializable {
     ICC_Profile(long profileHandle) {
         this.profileHandle = profileHandle;
         // A new object reference, need to add it.
-        NativeCMM.addHandle(this, profileHandle);
+       //NativeCMM.addHandle(this, profileHandle);
     }
 
     public void write(String fileName) throws IOException {

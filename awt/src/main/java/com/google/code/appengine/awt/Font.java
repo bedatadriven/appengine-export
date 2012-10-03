@@ -80,6 +80,8 @@ public class Font implements Serializable {
     
     static final Font DEFAULT_FONT = new Font("Dialog", Font.PLAIN, 12); //$NON-NLS-1$
 
+	public static final String SANS_SERIF = "Sans Serif";
+
     protected String name;
 
     protected int style;
