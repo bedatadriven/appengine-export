@@ -413,12 +413,12 @@ public class PngImage {
                 }
                 byte iccp[] = PdfReader.FlateDecode(icccom, true);
                 icccom = null;
-                try {
-                    icc_profile = ICC_Profile.getInstance(iccp);
-                }
-                catch (Exception e) {
+//                try {
+//                    icc_profile = ICC_Profile.getInstance(iccp);
+//                }
+                //catch (Exception e) {
                     icc_profile = null;
-                }
+                //}
             }
             else if (IEND.equals(marker)) {
                 break;

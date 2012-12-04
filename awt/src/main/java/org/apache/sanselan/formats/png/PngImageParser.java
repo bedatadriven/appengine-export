@@ -761,7 +761,9 @@ public class PngImageParser extends ImageParser implements PngConstants
                 PNGChunkiCCP pngChunkiCCP = (PNGChunkiCCP) iCCPs.get(0);
                 byte bytes[] = pngChunkiCCP.UncompressedProfile;
 
-                icc_profile = ICC_Profile.getInstance(bytes);
+                // TODO(maybe): ICC color profile
+                //icc_profile = ICC_Profile.getInstance(bytes);
+                icc_profile = null;
             } else if (gAMAs.size() == 1)
             {
                 PNGChunkgAMA pngChunkgAMA = (PNGChunkgAMA) gAMAs.get(0);
