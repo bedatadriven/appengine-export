@@ -3,7 +3,7 @@
   <parent>
 	<groupId>com.bedatadriven.appengine.export</groupId>
 	<artifactId>export-parent</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1-SNAPSHOT</version>
   </parent>
   <artifactId>appengine-emf</artifactId>
   <packaging>jar</packaging>
