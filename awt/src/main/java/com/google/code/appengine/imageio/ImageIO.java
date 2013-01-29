@@ -19,31 +19,33 @@ package com.google.code.appengine.imageio;
 
 
 
-import org.apache.harmony.luni.util.NotImplementedException;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Arrays;
-import java.util.List;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.harmony.luni.util.NotImplementedException;
 import org.apache.harmony.x.imageio.internal.nls.Messages;
 import org.apache.sanselan.ImageReadException;
-import org.apache.sanselan.common.byteSources.ByteSource;
 import org.apache.sanselan.common.byteSources.ByteSourceInputStream;
 import org.apache.sanselan.formats.png.PngImageParser;
 
 import com.google.code.appengine.awt.image.BufferedImage;
 import com.google.code.appengine.awt.image.RenderedImage;
-import com.google.code.appengine.imageio.ImageReader;
-import com.google.code.appengine.imageio.ImageTranscoder;
-import com.google.code.appengine.imageio.ImageTypeSpecifier;
-import com.google.code.appengine.imageio.ImageWriter;
-import com.google.code.appengine.imageio.spi.*;
+import com.google.code.appengine.imageio.spi.IIORegistry;
+import com.google.code.appengine.imageio.spi.ImageInputStreamSpi;
+import com.google.code.appengine.imageio.spi.ImageOutputStreamSpi;
+import com.google.code.appengine.imageio.spi.ImageReaderSpi;
+import com.google.code.appengine.imageio.spi.ImageReaderWriterSpi;
+import com.google.code.appengine.imageio.spi.ImageWriterSpi;
+import com.google.code.appengine.imageio.spi.ServiceRegistry;
 import com.google.code.appengine.imageio.stream.ImageInputStream;
 import com.google.code.appengine.imageio.stream.ImageOutputStream;
 
@@ -313,6 +315,15 @@ public final class ImageIO {
     public static BufferedImage read(File input) throws IOException {
         if (input == null) {
             throw new IllegalArgumentException(Messages.getString("imageio.52"));
+        }
+       
+        if(input.getName().endsWith(".png")) {
+        	PngImageParser parser = new PngImageParser();
+        	try {
+				return parser.getBufferedImage(input, new HashMap());
+			} catch (ImageReadException e) {
+				throw new IOException(e);
+			}
         }
 
         ImageInputStream stream = createImageInputStream(input);
