@@ -377,7 +377,7 @@ public abstract class Arc2D extends RectangularShape {
                     k = -k;
                 }
             } else {
-                arcCount = (int)Math.rint(Math.abs(extent) / 90.0);
+                arcCount = (int)Math.ceil(Math.abs(extent) / 90.0);
                 step = Math.toRadians(extent / arcCount);
                 k = 4.0 / 3.0 * (1.0 - Math.cos(step / 2.0))
                         / Math.sin(step / 2.0);
