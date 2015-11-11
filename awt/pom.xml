@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.bedatadriven.appengine.export</groupId>
 		<artifactId>export-parent</artifactId>
-		<version>0.1.2</version>
+		<version>0.1.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>appengine-awt</artifactId>
 	<packaging>jar</packaging>
