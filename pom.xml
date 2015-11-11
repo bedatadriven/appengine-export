@@ -5,14 +5,15 @@
 	<groupId>com.bedatadriven.appengine.export</groupId>
 	<artifactId>export-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1.3-SNAPSHOT</version>
+	<version>0.1.3</version>
 	<name>AppEngine Export Parent</name>
 
 	<scm>
 		<connection>scm:git:git@github.com:bedatadriven/appengine-export.git</connection>
 		<url>scm:git:git@github.com:bedatadriven/appengine-export.git</url>
 		<developerConnection>scm:git:git@github.com:bedatadriven/appengine-export.git</developerConnection>
-	</scm>
+	  <tag>export-parent-0.1.3</tag>
+  </scm>
 
 	<properties>
 
