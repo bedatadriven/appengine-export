@@ -980,15 +980,7 @@ public class HtmlWriter extends DocWriter {
                     }
                 }
                 write(HtmlTags.URL, path);
-                if ((image.getAlignment() & Image.RIGHT) > 0) {
-                    write(HtmlTags.ALIGN, HtmlTags.ALIGN_RIGHT);
-                }
-                else if ((image.getAlignment() & Image.MIDDLE) > 0) {
-                    write(HtmlTags.ALIGN, HtmlTags.ALIGN_MIDDLE);
-                }
-                else {
-                    write(HtmlTags.ALIGN, HtmlTags.ALIGN_LEFT);
-                }
+                
                 if (image.getAlt() != null) {
                     write(HtmlTags.ALT, image.getAlt());
                 }
